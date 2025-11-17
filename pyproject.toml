@@ -1,0 +1,10 @@
+[project]
+name = "qdrant-test-repo"
+version = "0.1.0"
+description = "Qdrant setup test project"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "python-dotenv>=1.2.1",
+    "qdrant-client>=1.16.0",
+]
