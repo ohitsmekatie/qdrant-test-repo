@@ -69,3 +69,18 @@ def insert_test_points(client: QdrantClient, collection_name: str) -> None:
     )
 
     print(f"Inserted {len(points)} test points into '{collection_name}' ✅")
+
+
+def search_vectors(client: QdrantClient, collection_name: str, query_vector: list):
+    """Run a vector search on the specified collection and print the results."""
+    try:
+        results = client.query_points(
+            collection_name=collection_name,
+            query=query_vector,
+            limit=5,  # optional: number of results to return
+        )
+        print("Search results:")
+        for r in results.points:
+            print(f" - ID: {r.id}, score: {r.score}, payload: {r.payload}")
+    except Exception as e:
+        print("Vector search failed:", e)
